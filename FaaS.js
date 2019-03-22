@@ -10,14 +10,14 @@ const assistant = new watson.AssistantV1({
 });
 
 function main(params) {
-    console.log(params.context)
-    console.log(params.question)
+    console.log(params.request.context)
+    console.log(params.request.question)
 	return new Promise((resolve, reject) => {
         let message = {
             "message":{
-                "text": params.question
+                "text": params.request.question
             },
-            "context":{...params.context}
+            "context":{...params.request.context}
         };
         assistant.message({
             workspace_id: workspace_id,
